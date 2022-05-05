@@ -18,6 +18,7 @@ Mutation: {
 async createPost(_, {title,text,image,community_id}, context){ 
 const user = checkAuth(context);
 console.log(user.user_id);
+console.log(user.name)
 const res = await pool.query(
     "INSERT INTO posts(user_id,title, text, image, created_at,name,profilepic, community_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",[user.user_id,title,text,image, new Date().toISOString().slice(0, 19).replace('T', ' '), user.name, user.profilepic,community_id]);
 

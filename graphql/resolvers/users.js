@@ -11,6 +11,8 @@ module.exports = {
         const schoolQuery = await pool.query("SELECT * FROM school WHERE id=$1",[user.rows[0].school]);
 
         let school = schoolQuery.rows[0];
+
+        console.log("SKOLE",school)
         return {
          ...user.rows[0],
          school
